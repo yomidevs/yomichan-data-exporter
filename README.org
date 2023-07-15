@@ -3,21 +3,30 @@
 * Background
 
 [[https://github.com/FooSoft/yomichan][Yomichan]] is a very cool pop-up dictionary for web browsers. However, it has
-been sunset. A promising fork exists in the form of [[https://github.com/themoeway/yomitan/][Yomitan]] but migration is
-going to require people to be able to move their dictionaries (of which there
-could be numerous) and import them again. More importantly, Yomichan has always
+been sunset.
+
+[[https://github.com/themoeway/yomitan/][Yomitan]] is a fork of Yomichan by [[https://github.com/themoeway][TheMoeWay community]]. Yomitan isn't ready for
+public use yet, but is in active development.
+
+Migration from Yomichan to Yomitan is going to require people to be able to
+move their dictionaries (of which there could be numerous) from Yomichan into
+Yomitan. Yomichan lacks export support for dictionaries so people would have to
+track down the individual dictionaries they imported and re-import them. This
+has in fact been a sore point without concerning Yomitan as Yomichan has always
 missed the migration story for when people want to move between devices or
 browsers because dictionaries had to be imported one at a time every time.
 
-I have [[https://github.com/forsakeninfinity/yomibaba][a temporary fork of Yomichan (named Yomibaba for kicks)]] that supports
+There is [[https://github.com/forsakeninfinity/yomibaba][a temporary fork of Yomichan (named Yomibaba for kicks)]] that supports
 exporting and importing the entire IndexedDB database of dictionaries that have
 been imported by Yomichan. This lets you track only one file when you want to
 migrate between browsers and devices, or indeed when you just want to share
 your settings with newer people without giving them a mountain of drudgery to
 tackle first. Backups also become more manageable. It is also significantly
 faster to load all the data this way since it avoids all the parsing and
-validation that Yomichan typically does (of course that means the data could be
-invalid too).
+validation that Yomichan typically does.
+
+Yomitan is going to include this change and support exporting and importing the
+entire collection of dictionaries when it will be released to the public.
 
 The problem is that the existing Yomichan extension installations don't have
 the code that lets you export the database. Which means that we have no choice
@@ -35,7 +44,7 @@ to that end.
 + Paste the following into the console and wait for the export + download to
   finish:
 #+begin_src js
-fetch("https://raw.githubusercontent.com/forsakeninfinity/yomichan-data-exporter/release/dist/yomichan-data-exporter.min.js")
+fetch("https://raw.githubusercontent.com/themoeway/yomichan-data-exporter/release/dist/yomichan-data-exporter.min.js")
   .then((resp) => resp.text())
   .then((srcText) => {
     eval(srcText);
@@ -53,11 +62,12 @@ fetch("https://raw.githubusercontent.com/forsakeninfinity/yomichan-data-exporter
 + Unfortunately(?!), Yomichan released on Chrome doesn't have permission to
   actually inject code (I tried a whole bunch of different approaches and the
   permissions are just lacking) so you are going to have to paste the contents
-  of the [[https://raw.githubusercontent.com/forsakeninfinity/yomichan-data-exporter/release/dist/yomichan-data-exporter.min.js][exporter code]] into the console.
+  of the [[https://raw.githubusercontent.com/themoeway/yomichan-data-exporter/release/dist/yomichan-data-exporter.min.js
+][exporter code]] into the console.
 
   It is a very long "one-liner" and apparently github is pretty bad at handling
   all of it being put into a code box so you may want to open the raw file,
-  select all, then copy and paste into the console. [[https://raw.githubusercontent.com/forsakeninfinity/yomichan-data-exporter/release/dist/yomichan-data-exporter.min.js][Link to the raw]].
+  select all, then copy and paste into the console. [[https://raw.githubusercontent.com/themoeway/yomichan-data-exporter/release/dist/yomichan-data-exporter.min.js][Link to the raw]].
 
 + Finally, paste the following into the console and wait for the export +
   download to finish:

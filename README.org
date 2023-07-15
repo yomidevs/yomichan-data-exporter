@@ -35,7 +35,7 @@ to that end.
 + Paste the following into the console and wait for the export + download to
   finish:
 #+begin_src js
-fetch("https://raw.githubusercontent.com/forsakeninfinity/yomichan-data-exporter/main/dist/yomichan-data-exporter.min.js")
+fetch("https://raw.githubusercontent.com/forsakeninfinity/yomichan-data-exporter/release/dist/yomichan-data-exporter.min.js")
   .then((resp) => resp.text())
   .then((srcText) => {
     eval(srcText);
@@ -53,14 +53,12 @@ fetch("https://raw.githubusercontent.com/forsakeninfinity/yomichan-data-exporter
 + Unfortunately(?!), Yomichan released on Chrome doesn't have permission to
   actually inject code (I tried a whole bunch of different approaches and the
   permissions are just lacking) so you are going to have to paste the contents
-  of the [[https://raw.githubusercontent.com/forsakeninfinity/yomichan-data-exporter/main/dist/yomichan-data-exporter.min.js][exporter code]] into the console.
+  of the [[https://raw.githubusercontent.com/forsakeninfinity/yomichan-data-exporter/release/dist/yomichan-data-exporter.min.js][exporter code]] into the console.
 
   It is a very long "one-liner" and apparently github is pretty bad at handling
   all of it being put into a code box so you may want to open the raw file,
-  select all, then copy and paste into the console. [[https://raw.githubusercontent.com/forsakeninfinity/yomichan-data-exporter/main/dist/yomichan-data-exporter.min.js][Link to the raw]].
+  select all, then copy and paste into the console. [[https://raw.githubusercontent.com/forsakeninfinity/yomichan-data-exporter/release/dist/yomichan-data-exporter.min.js][Link to the raw]].
 
-  But here's a link to a page with a code box that lets you copy with click if
-  you don't mind waiting a bit for the page to load: [[file:Chrome_command.org][Command for Chrome]]
 + Finally, paste the following into the console and wait for the export +
   download to finish:
 #+begin_src js
@@ -94,14 +92,3 @@ and Yomibaba's welcome page for more information.
 
 + Source Repository: https://github.com/rndme/download
 + MIT LICENSE: https://github.com/rndme/download/blob/master/LICENSE.md
-
-* Building
-
-You will need to have a working =npm= installation and install
-=uglify-js=. Then just invoke the =build.sh= script from the root folder of the
-repository. This doesn't warrant more time spent figuring out a nicer build
-system given that it's unlikely to ever see another build to begin with.
-#+begin_src sh
-npm install -g uglify-js
-./build.sh
-#+end_src

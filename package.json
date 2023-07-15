@@ -1,0 +1,16 @@
+{
+  "name": "test-github-actions",
+  "repository": "forsakeninfinity/test-github-actions",
+  "homepage": "https://github.com/forsakeninfinity/test-github-actions",
+  "scripts": {
+    "build": "uglifyjs lib/dexie.js lib/dexie-export-import.js lib/download.js src/main.js -o dist/yomichan-data-exporter.min.js"
+  },
+  "devDependencies": {
+    "uglify-js": "3.17.4"
+  },
+  "dependencies": {
+    "dexie": "3.2.4",
+    "dexie-export-import": "4.0.7",
+    "downloadjs": "1.4.7"
+  }
+}

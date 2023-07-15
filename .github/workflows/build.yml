@@ -1,0 +1,46 @@
+name: Download dependencies and build a combined, minified source for release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+          npm install
+          mv node_modules/dexie/dist/dexie.js lib/dexie.js
+          mv node_modules/dexie-export-import/dist/dexie-export-import.js lib/dexie-export-import.js
+          mv node_modules/downloadjs/download.js lib/download.js
+
+      - name: Minify and combine source code
+        run: |
+          npm run build
+
+      - name: Remove node_modules
+        run:
+          rm -rf node_modules
+
+      - name: Commit source to main branch
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          echo `date` > .last_built_on
+          git add . -A
+          git commit -m "Minify and combine dependencies as of $(date +%s)."
+          git push
+
+      - name: Commit minified dependencies to release branch
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git fetch
+          git checkout release
+          git checkout ${GITHUB_REF##*/} dist/yomichan-data-exporter.min.js .last_built_on
+          git commit -am "Release minified and combined dependencies as of $(date +%s)."
+          git push origin release

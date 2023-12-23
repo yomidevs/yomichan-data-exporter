@@ -5,8 +5,7 @@
 [[https://github.com/FooSoft/yomichan][Yomichan]] is a very cool pop-up dictionary for web browsers. However, it has
 been sunset.
 
-[[https://github.com/themoeway/yomitan/][Yomitan]] is a fork of Yomichan by [[https://github.com/themoeway][TheMoeWay community]]. Yomitan isn't ready for
-public use yet, but is in active development.
+[[https://github.com/themoeway/yomitan/][Yomitan]] is a fork of Yomichan by [[https://github.com/themoeway][TheMoeWay community]] which is actively maintained.
 
 Migration from Yomichan to Yomitan is going to require people to be able to
 move their dictionaries (of which there could be numerous) from Yomichan into
@@ -16,19 +15,8 @@ has in fact been a sore point without concerning Yomitan as Yomichan has always
 missed the migration story for when people want to move between devices or
 browsers because dictionaries had to be imported one at a time every time.
 
-There is [[https://github.com/forsakeninfinity/yomibaba][a temporary fork of Yomichan (named Yomibaba for kicks)]] that supports
-exporting and importing the entire IndexedDB database of dictionaries that have
-been imported by Yomichan. This lets you track only one file when you want to
-migrate between browsers and devices, or indeed when you just want to share
-your settings with newer people without giving them a mountain of drudgery to
-tackle first. Backups also become more manageable. It is also significantly
-faster to load all the data this way since it avoids all the parsing and
-validation that Yomichan typically does.
-
-Yomitan is going to include this change and support exporting and importing the
-entire collection of dictionaries when it will be released to the public.
-
-The problem is that the existing Yomichan extension installations don't have
+Yomitan supports exporting and importing the
+entire collection of dictionaries. However, the existing Yomichan extension installations don't have
 the code that lets you export the database. Which means that we have no choice
 but to inject and run the code on top of the extension somehow. This repository
 is just to provide a method that works without much headache for the end-user
@@ -79,11 +67,10 @@ await exportDatabase();
 You can actually import the exported dictionaries into existing installations
 of Yomichan, but it is going to require similarly annoying console one-offs.
 
-Instead, I strongly recommend migrating to [[https://github.com/forsakeninfinity/yomibaba][Yomibaba]] for the time being (and
-eventually [[https://github.com/themoeway/yomitan/][Yomitan]]) where there is first-class support for importing (and
+Instead, I strongly recommend migrating to [[https://github.com/themoeway/yomitan/][Yomitan]] where there is first-class support for importing (and
 exporting) this data in the =Backup= section of the settings page. The UI there
-should be self-explanatory, but refer to the Yomibababa repo's documentation
-and Yomibaba's welcome page for more information.
+should be self-explanatory, but refer to the [[https://github.com/themoeway/yomitan?tab=readme-ov-file#migrating-from-yomichan][Yomitan repo's documentation]]
+and Yomitan's welcome page for more information.
 
 * Dependencies
 

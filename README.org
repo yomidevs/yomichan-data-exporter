@@ -5,7 +5,7 @@
 [[https://github.com/FooSoft/yomichan][Yomichan]] is a very cool pop-up dictionary for web browsers. However, it has
 been sunset.
 
-[[https://github.com/themoeway/yomitan/][Yomitan]] is a fork of Yomichan by [[https://github.com/themoeway][TheMoeWay community]] which is actively maintained.
+[[https://github.com/yomidevs/yomitan/][Yomitan]] is a fork of Yomichan by [[https://github.com/yomidevs][Yomidevs]] which is actively maintained.
 
 Migration from Yomichan to Yomitan is going to require people to be able to
 move their dictionaries (of which there could be numerous) from Yomichan into
@@ -32,7 +32,7 @@ to that end.
 + Paste the following into the console and wait for the export + download to
   finish:
 #+begin_src js
-fetch("https://raw.githubusercontent.com/themoeway/yomichan-data-exporter/release/dist/yomichan-data-exporter.min.js")
+fetch("https://raw.githubusercontent.com/yomidevs/yomichan-data-exporter/release/dist/yomichan-data-exporter.min.js")
   .then((resp) => resp.text())
   .then((srcText) => {
     eval(srcText);
@@ -50,11 +50,11 @@ fetch("https://raw.githubusercontent.com/themoeway/yomichan-data-exporter/releas
 + Unfortunately(?!), Yomichan released on Chrome doesn't have permission to
   actually inject code (I tried a whole bunch of different approaches and the
   permissions are just lacking) so you are going to have to paste the contents
-  of the [[https://raw.githubusercontent.com/themoeway/yomichan-data-exporter/release/dist/yomichan-data-exporter.min.js][exporter code]] into the console.
+  of the [[https://raw.githubusercontent.com/yomidevs/yomichan-data-exporter/release/dist/yomichan-data-exporter.min.js][exporter code]] into the console.
 
   It is a very long "one-liner" and apparently github is pretty bad at handling
   all of it being put into a code box so you may want to open the raw file,
-  select all, then copy and paste into the console. [[https://raw.githubusercontent.com/themoeway/yomichan-data-exporter/release/dist/yomichan-data-exporter.min.js][Link to the raw]].
+  select all, then copy and paste into the console. [[https://raw.githubusercontent.com/yomidevs/yomichan-data-exporter/release/dist/yomichan-data-exporter.min.js][Link to the raw]].
 
 + Finally, paste the following into the console and wait for the export +
   download to finish:
@@ -67,9 +67,9 @@ await exportDatabase();
 You can actually import the exported dictionaries into existing installations
 of Yomichan, but it is going to require similarly annoying console one-offs.
 
-Instead, I strongly recommend migrating to [[https://github.com/themoeway/yomitan/][Yomitan]] where there is first-class support for importing (and
+Instead, I strongly recommend migrating to [[https://github.com/yomidevs/yomitan/][Yomitan]] where there is first-class support for importing (and
 exporting) this data in the =Backup= section of the settings page. The UI there
-should be self-explanatory, but refer to the [[https://github.com/themoeway/yomitan?tab=readme-ov-file#migrating-from-yomichan][Yomitan repo's documentation]]
+should be self-explanatory, but refer to the [[https://github.com/yomidevs/yomitan?tab=readme-ov-file#migrating-from-yomichan][Yomitan repo's documentation]]
 and Yomitan's welcome page for more information.
 
 * Dependencies
